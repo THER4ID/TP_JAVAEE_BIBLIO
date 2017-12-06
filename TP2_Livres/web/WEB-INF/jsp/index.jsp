@@ -24,15 +24,13 @@
         <div class="container">
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
-                  <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Livres</a>
-                  </div>
-                  <ul class="nav navbar-nav">
-                      <li class="active"><a href="#add">Ajouter un livre</a></li>
-                      <li class="active"><a class="deconnecter"  href="#disconnect">Déconnexion</a></li>
-                      
-                  </ul>
-
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#">Livres</a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#add">Ajouter un livre</a></li>
+                        <li class="active"><a class="deconnecter"  href="#disconnect">Déconnexion</a></li>                    
+                    </ul>
                 </div>     
             </nav>
         </div>  
