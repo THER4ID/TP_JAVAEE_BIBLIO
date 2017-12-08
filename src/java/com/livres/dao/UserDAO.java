@@ -14,67 +14,97 @@ import java.util.List;
 
 /**
  *
- * @author Virtual-nicolas
+ * @author usager
  */
-public class UserDAO extends DAO<User>{
+public class UserDAO extends DAO<User> {
 
     public UserDAO(Connection cnx) {
-        super(cnx);
+       super(cnx);
     }
-
     @Override
-    public User read(String id) {
+    public boolean create(User x) {
+        String req = "INSERT INTO users (`USERNAME` , `PASSWORD` , `EMAIL`)";
+        PreparedStatement stm = null;
+        try
+        {
 
-    User utilisateur = null;
-    String type = "etudiant";
-
-    String requeteEtud = "SELECT * from etudiant WHERE courriel = ?";
-    String requetePro = "SELECT * from professeur WHERE courriel = ?";
-
-    PreparedStatement paramQuery = null;
-    ResultSet resultat = null;
-
-    try {
-
-        paramQuery = cnx.prepareStatement(requeteEtud);
-        paramQuery.setString(1,id);
-        resultat = paramQuery.executeQuery();
-
-        utilisateur = new User();
-        utilisateur.setCourriel(resultat.getString("courriel"));
-        utilisateur.setMotDePasse(resultat.getString("mot_de_passe"));
-        utilisateur.setNom(resultat.getString("nom"));
-
-        paramQuery.close();
-        cnx.close();
-
-    } catch (SQLException ex) {
-        System.out.println("Exception : "+ex);
-    } catch (Exception exp){
-        System.out.println("Exception : "+exp);
-    }
-    finally{
-        if(paramQuery != null){
-            try {
-                paramQuery.close();
-                cnx.close();
-            } catch (SQLException ex) {
-                System.out.println("Exception : "+ex);
+            stm = cnx.prepareStatement(req);
+            stm.setString(1,x.getUsername());
+            stm.setString(2,x.getPassword());
+            stm.setString(3,x.getEmail());
+            int n= stm.executeUpdate();
+            if (n>0)
+            {
+                    stm.close();
+                    return true;
             }
         }
+        catch (SQLException exp)
+        {
+        }
+        finally
+        {
+                if (stm!=null)
+                try {
+                        stm.close();
+                } catch (SQLException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                }
+        }
+        return false;
     }
-    return utilisateur;
-}
+    public User FindByUsername(String Username)
+    {
+        PreparedStatement stm = null;
+        ResultSet r = null;
+        try
+        {
+            String req="SELECT * FROM COMPTE WHERE USERNAME =?";
+            stm = cnx.prepareStatement(req);
+            stm.setString(1,Username);
+            r = stm.executeQuery();
+            if(r.next()){
+                User u = new User();
+                u.setUsername(r.getString("USERNAME"));
+                u.setUsername(r.getString("PASSWORD"));
+                u.setUsername(r.getString("EMAIL"));
+                r.close();
+                stm.close();
+                return u;
+            }
+        }
+        catch(SQLException exp)
+        {
+        }
+        finally
+        {
+            if (stm!=null)
+            {
+                try
+                {
+                    r.close();
+                    stm.close();
+                }
+                catch(SQLException e)
+                {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return null;
 
-    @Override
-    public Boolean create(User x) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
     }
 
     @Override
     public User read(int id) {
-        User u = this.read(id+"");
-        return u;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public User read(String id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -87,8 +117,9 @@ public class UserDAO extends DAO<User>{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-
+    @Override
     public List<User> findAll() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
 }

@@ -1,6 +1,6 @@
-<%--
-    Document   : connexion
-    Created on : 2017-12-04, 14:54:01
+<%-- 
+    Document   : CreerCompte
+    Created on : 2017-12-08, 12:26:57
     Author     : usager
 --%>
 
@@ -9,11 +9,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Connexion</title>
-
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
     </head>
-
-    <style>
+     <style>
         @import url(https://fonts.googleapis.com/css?family=Roboto:300);
         .login-page {
           width: 360px;
@@ -111,28 +110,29 @@
           background: linear-gradient(to left, #76b852, #8DC26F);
           font-family: "Roboto", sans-serif;
           -webkit-font-smoothing: antialiased;
-          -moz-osx-font-smoothing: grayscale;
+          -moz-osx-font-smoothing: grayscale;      
         }
     </style>
+    
     <script>
-        //fonction
+        //script
         $('.message a').click(function(){
             $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
         });
+       
     </script>
     <body>
         <div class="login-page">
-            <div class="form">
-
-              <form class="login-form" action= "connection.action" method="post">
+            <div class="form">     
+              </form>
+              <form class="login-form" action ="creation.action" method="post">
+                <input type ='hidden' name='Action' value="creation" />
                 <span class="errorMessage"><c:out value="${requestScope.message}" /></span>
-                <p>Message: ${message}</p>
-                <c:remove var="message" scope="session" />
-                <input type ='hidden' name='Action' value="connection" />
-                <input  type="text" placeholder="Nom d'utilisateur" name="username"/>
-                <input type="password" placeholder="Mot de passe" name="password"/>
-                <button type='submit'>se connecter</button>
-                <p class="message">Nouvel utilisateur? <a href="CreerCompte.jsp">Créer un Compte</a></p>
+                <input type="text" placeholder="Nom D'Utilisateur" name="prenom"/>
+                <input type="password" placeholder="mot de passe" name="mdpcreer"/>
+                <input type="text" placeholder="adresse courriel" name="courrielcreer"/>
+                <button id="register">créer le compte</button>
+                <p class="message">déjà un compte? <a href="PageConnexion.Jsp">Se connecter</a></p>
               </form>
             </div>
         </div>

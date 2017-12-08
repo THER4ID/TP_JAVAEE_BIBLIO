@@ -7,42 +7,35 @@ package com.livres.model;
 
 /**
  *
- * @author Virtual-nicolas
+ * @author usager
  */
 public class User {
-    protected String  courriel, motDePasse, nom;
-    public String test = "testUtil";
 
-    public User(){
+    private String Username;
+    private String Password;
+    private String Email;
+
+    public void setUsername(String Username) {
+        this.Username = Username;
     }
 
-    public User(String mdp, String courriel, String nom) {
-        this.motDePasse = mdp;
-        this.courriel = courriel;
-        this.nom = nom;
+    public void setPassword(String Password) {
+        this.Password = Password;
     }
 
-    public String getMotDePasse() {
-        return motDePasse;
+    public void setEmail(String Email) {
+        this.Email = Email;
     }
 
-    public String getCourriel() {
-        return courriel;
+    public String getUsername() {
+        return Username;
     }
 
-    public String getNom() {
-        return nom;
+    public String getPassword() {
+        return Password;
     }
 
-    public void setMotDePasse(String motDePasse) {
-        this.motDePasse = motDePasse;
-    }
-
-    public void setCourriel(String courriel) {
-        this.courriel = courriel;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
+    public String getEmail() {
+        return Email;
     }
 }
