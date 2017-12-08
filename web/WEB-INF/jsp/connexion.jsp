@@ -131,7 +131,7 @@
                 <input type ='hidden' name='Action' value="connection" />
                 <input  type="text" placeholder="Nom d'utilisateur" name="username"/>
                 <input type="password" placeholder="Mot de passe" name="password"/>
-                <button type='submit'>se connecter</button>
+                <button type='submit'>Créer le Compte</button>
                 <p class="message">Nouvel utilisateur? <a href="CreerCompte.jsp">Créer un Compte</a></p>
               </form>
             </div>
