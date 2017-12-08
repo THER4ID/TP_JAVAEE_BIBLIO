@@ -19,7 +19,7 @@ public abstract class DAO<T> {
 		//super();
 		this.cnx = cnx;
 	}
-	
+
 	public Connection getCnx() {
 		return cnx;
 	}

@@ -17,7 +17,7 @@ import java.util.List;
  * @author usager
  */
 public class UserDAO extends DAO<User> {
-    
+
     public UserDAO(Connection cnx) {
        super(cnx);
     }
@@ -27,7 +27,7 @@ public class UserDAO extends DAO<User> {
         PreparedStatement stm = null;
         try
         {
-            
+
             stm = cnx.prepareStatement(req);
             stm.setString(1,x.getUsername());
             stm.setString(2,x.getPassword());
@@ -50,7 +50,7 @@ public class UserDAO extends DAO<User> {
                 } catch (SQLException e) {
                         // TODO Auto-generated catch block
                         e.printStackTrace();
-                }			
+                }
         }
         return false;
     }
@@ -93,10 +93,10 @@ public class UserDAO extends DAO<User> {
             }
         }
         return null;
-        
-    
+
+
     }
-    
+
     @Override
     public User read(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -121,5 +121,5 @@ public class UserDAO extends DAO<User> {
     public List<User> findAll() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : connexion
     Created on : 2017-12-04, 14:54:01
     Author     : usager
@@ -10,9 +10,9 @@
 <html>
     <head>
         <title>Connexion</title>
-        
+
     </head>
-    
+
     <style>
         @import url(https://fonts.googleapis.com/css?family=Roboto:300);
         .login-page {
@@ -111,7 +111,7 @@
           background: linear-gradient(to left, #76b852, #8DC26F);
           font-family: "Roboto", sans-serif;
           -webkit-font-smoothing: antialiased;
-          -moz-osx-font-smoothing: grayscale;      
+          -moz-osx-font-smoothing: grayscale;
         }
     </style>
     <script>
@@ -123,11 +123,11 @@
     <body>
         <div class="login-page">
             <div class="form">
-              
+
               <form class="login-form" action= "connection.action" method="post">
                 <span class="errorMessage"><c:out value="${requestScope.message}" /></span>
                 <p>Message: ${message}</p>
-                <c:remove var="message" scope="session" /> 
+                <c:remove var="message" scope="session" />
                 <input type ='hidden' name='Action' value="connection" />
                 <input  type="text" placeholder="Nom d'utilisateur" name="username"/>
                 <input type="password" placeholder="Mot de passe" name="password"/>

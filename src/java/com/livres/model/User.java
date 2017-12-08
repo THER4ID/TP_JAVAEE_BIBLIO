@@ -10,7 +10,7 @@ package com.livres.model;
  * @author usager
  */
 public class User {
-    
+
     private String Username;
     private String Password;
     private String Email;

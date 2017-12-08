@@ -7,21 +7,38 @@
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
+
     <servlet>
-        <servlet-name>dispatcher</servlet-name>
+        <servlet-name>MembersController</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>/WEB-INF/members-servlet.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet>
+        <servlet-name>BooksController</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>/WEB-INF/books-servlet.xml</param-value>
+        </init-param>
         <load-on-startup>2</load-on-startup>
     </servlet>
+
     <servlet-mapping>
-        <servlet-name>dispatcher</servlet-name>
-        <url-pattern>*.htm</url-pattern>
+        <servlet-name>MembersController</servlet-name>
+        <url-pattern>/members/</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BooksController</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
-    <welcome-file-list>
-        <welcome-file>redirect.jsp</welcome-file>
-    </welcome-file-list>
 </web-app>
