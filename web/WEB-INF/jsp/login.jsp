@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : connexion
     Created on : 2017-12-04, 14:54:01
     Author     : usager
@@ -13,5 +13,6 @@
     </head>
     <body>
         <h1>Hello World!</h1>
+        Ceci est la page de login. 👋 🙏
     </body>
 </html>
