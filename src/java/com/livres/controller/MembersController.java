@@ -53,7 +53,7 @@ public class MembersController {
     }
 
     //@ResponseBody
-    @RequestMapping("/*")
+    @RequestMapping("/")
     public View welcome(ModelMap model, HttpSession session)  {
         System.out.println("In controller MembersController.welcome");
 

@@ -45,7 +45,7 @@
 
     <servlet-mapping>
         <servlet-name>MembersController</servlet-name>
-        <url-pattern>/members/</url-pattern>
+        <url-pattern>/members/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>BooksController</servlet-name>
