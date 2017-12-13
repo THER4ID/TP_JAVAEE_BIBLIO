@@ -10,6 +10,9 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.View;
+import org.springframework.web.servlet.view.JstlView;
+import org.springframework.web.servlet.view.RedirectView;
 
 /**
  *
@@ -20,13 +23,15 @@ public class BooksController {
 
     //@ResponseBody
     @RequestMapping("/")
-    public String welcome(ModelMap model, HttpSession session)  {
-
+    public View welcome(ModelMap model, HttpSession session)  {
+        System.out.println("In controller BooksController");
         User user = (User)session.getAttribute("User");
         if (user != null) {
-            return "index";
+            System.out.println("(user != null)");
+            return new JstlView("index");
         } else {
-            return "login";
+            System.out.println("do a redirect");
+            return new RedirectView("/members/login", true, false);
         }
 
     }

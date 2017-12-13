@@ -6,7 +6,6 @@
 package com.livres.dao;
 
 import com.livres.model.User;
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,9 +17,6 @@ import java.util.List;
  */
 public class UserDAO extends DAO<User> {
 
-    public UserDAO(Connection cnx) {
-       super(cnx);
-    }
     @Override
     public boolean create(User x) {
         String req = "INSERT INTO users (`USERNAME` , `PASSWORD` , `EMAIL`)";
@@ -28,7 +24,7 @@ public class UserDAO extends DAO<User> {
         try
         {
 
-            stm = cnx.prepareStatement(req);
+            stm = connexion.getInstance().prepareStatement(req);
             stm.setString(1,x.getUsername());
             stm.setString(2,x.getPassword());
             stm.setString(3,x.getEmail());
@@ -54,15 +50,14 @@ public class UserDAO extends DAO<User> {
         }
         return false;
     }
-    public User FindByUsername(String Username)
-    {
+
+    public User FindByUsername(String username) {
         PreparedStatement stm = null;
         ResultSet r = null;
-        try
-        {
+        try {
             String req="SELECT * FROM COMPTE WHERE USERNAME =?";
-            stm = cnx.prepareStatement(req);
-            stm.setString(1,Username);
+            stm = connexion.getInstance().prepareStatement(req);
+            stm.setString(1,username);
             r = stm.executeQuery();
             if(r.next()){
                 User u = new User();
@@ -74,27 +69,52 @@ public class UserDAO extends DAO<User> {
                 return u;
             }
         }
-        catch(SQLException exp)
-        {
-        }
-        finally
-        {
-            if (stm!=null)
-            {
-                try
-                {
+        catch(SQLException exp) { }
+        finally {
+            if (stm!=null) {
+                try {
                     r.close();
                     stm.close();
                 }
-                catch(SQLException e)
-                {
+                catch(SQLException e) {
                     e.printStackTrace();
                 }
             }
         }
         return null;
+    }
 
-
+    public User FindByEmail(String email) {
+        PreparedStatement stm = null;
+        ResultSet r = null;
+        try {
+            String req="SELECT * FROM COMPTE WHERE EMAIL =?";
+            stm = connexion.getInstance().prepareStatement(req);
+            stm.setString(1,email);
+            r = stm.executeQuery();
+            if(r.next()){
+                User u = new User();
+                u.setUsername(r.getString("USERNAME"));
+                u.setUsername(r.getString("PASSWORD"));
+                u.setUsername(r.getString("EMAIL"));
+                r.close();
+                stm.close();
+                return u;
+            }
+        }
+        catch(SQLException exp) { }
+        finally {
+            if (stm!=null) {
+                try {
+                    r.close();
+                    stm.close();
+                }
+                catch(SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return null;
     }
 
     @Override
