@@ -5,27 +5,19 @@
  */
 package com.livres.dao;
 
-import java.sql.Connection;
+import com.livres.jdbc.Connexion;
 import java.util.List;
 
 /**
  *
  * @author usager
+ * @param <T>
  */
 public abstract class DAO<T> {
-	protected Connection cnx;
+	protected Connexion connexion;
 
-	public DAO(Connection cnx) {
-		//super();
-		this.cnx = cnx;
-	}
-
-	public Connection getCnx() {
-		return cnx;
-	}
-
-	public void setCnx(Connection cnx) {
-		this.cnx = cnx;
+	public void setConnexion(Connexion connexion) {
+		this.connexion = connexion;
 	}
 
 	public abstract boolean create(T x);    //INSERT

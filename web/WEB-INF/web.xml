@@ -4,6 +4,22 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>/WEB-INF/applicationContext.xml</param-value>
     </context-param>
+     <context-param>
+        <param-name>pilote</param-name>
+        <param-value>com.mysql.jdbc.Driver</param-value>
+    </context-param>
+    <context-param>
+        <param-name>urlBd</param-name>
+        <param-value>jdbc:mysql://localhost/conversion</param-value>
+    </context-param>
+    <context-param>
+        <param-name>dbUser</param-name>
+        <param-value>root</param-value>
+    </context-param>
+    <context-param>
+        <param-name>dbPassword</param-name>
+        <param-value>root</param-value>
+    </context-param>
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
@@ -29,7 +45,7 @@
 
     <servlet-mapping>
         <servlet-name>MembersController</servlet-name>
-        <url-pattern>/members/</url-pattern>
+        <url-pattern>/members/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>BooksController</servlet-name>

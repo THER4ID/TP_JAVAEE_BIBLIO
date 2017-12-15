@@ -21,12 +21,14 @@ public class BooksController {
     //@ResponseBody
     @RequestMapping("/")
     public String welcome(ModelMap model, HttpSession session)  {
-
+        System.out.println("In controller BooksController");
         User user = (User)session.getAttribute("User");
         if (user != null) {
+            System.out.println("(user != null)");
             return "index";
         } else {
-            return "index";
+            System.out.println("do a redirect");
+            return "redirect:/members/login";
         }
 
     }

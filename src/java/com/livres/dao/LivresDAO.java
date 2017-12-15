@@ -6,8 +6,6 @@
 package com.livres.dao;
 
 import com.livres.model.Livre;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,19 +18,15 @@ import java.util.List;
  * @author usager
  */
 public class LivresDAO extends DAO<Livre>{
-    
-    public LivresDAO(Connection cnx) {
-       super(cnx);
-    }
 
     @Override
     public boolean create(Livre x) {
         String req = "INSERT INTO BOOK commentaire (`ISBN` , `AUTHOR` , `TITLE`, `NB_PAGES`, `EDITION`, `YEAR`, `LANGUAGE`, `DESCRIPTION`, `KEYWORDS`) "+
 			     "VALUES (?,?,?,?,?,?,?,?,?)";
                 PreparedStatement stm = null;
-		try 
+		try
 		{
-			stm = cnx.prepareStatement(req);
+			stm = connexion.getInstance().prepareStatement(req);
                         stm.setString(1,x.getISBN());
                         stm.setString(2,x.getAuthor() );
                         stm.setString(3,x.getTitle());
@@ -57,11 +51,11 @@ public class LivresDAO extends DAO<Livre>{
 			if (stm!=null)
 			try {
 				stm.close();
-			} 
+			}
                         catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}			
+			}
 		}
 		return false;
     }
@@ -92,7 +86,7 @@ public class LivresDAO extends DAO<Livre>{
 
         try
         {
-            Statement stm = cnx.createStatement(); 
+            Statement stm = connexion.getInstance().createStatement();
             ResultSet r = stm.executeQuery("SELECT * FROM book");
             while(r.next()){
                 Livre L = new Livre();
@@ -112,10 +106,10 @@ public class LivresDAO extends DAO<Livre>{
         }
         catch(SQLException exp)
         {
-        
+
         }
         return liste;
     }
 
-   
+
 }

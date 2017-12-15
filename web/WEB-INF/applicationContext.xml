@@ -19,4 +19,13 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+    <bean id="connexion" class="com.livres.jdbc.Connexion">
+    </bean>
+    <bean id="userDAO" class="com.livres.dao.UserDAO">
+        <property name="connexion" ref="connexion"/>
+    </bean>
+    <bean name="loginService" class="com.livres.services.LoginService">
+        <property name="dao" ref="userDAO"/>
+    </bean>
+
 </beans>
