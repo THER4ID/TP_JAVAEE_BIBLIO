@@ -15,7 +15,8 @@
 
     <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
 
-    <bean name="MembersController"
-          class="com.livres.controller.MembersController" />
+    <bean id="membersController" class="com.livres.controller.MembersController">
+            <property name="membersService" ref="membersService"/>
+    </bean>
 
 </beans>

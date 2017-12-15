@@ -124,15 +124,11 @@
         <div class="login-page">
             <div class="form">
 
-              <form class="login-form" action= "connection.action" method="post">
-                <span class="errorMessage"><c:out value="${requestScope.message}" /></span>
-                <p>Message: ${message}</p>
-                <c:remove var="message" scope="session" />
-                <input type ='hidden' name='Action' value="connection" />
-                <input  type="text" placeholder="Nom d'utilisateur" name="username"/>
-                <input type="password" placeholder="Mot de passe" name="password"/>
-                <button type='submit'>Créer le Compte</button>
-                <p class="message">Nouvel utilisateur? <a href="CreerCompte.jsp">Créer un Compte</a></p>
+              <form class="login-form" action="login" method="post">
+                <input type="email" placeholder="Adresse courriel" name="email" required/>
+                <input type="password" placeholder="Mot de passe" name="password" required/>
+                <button type='submit'>Se connecter</button>
+                <p class="message">Nouvel utilisateur? <a href="register">Créer un Compte</a></p>
               </form>
             </div>
         </div>
