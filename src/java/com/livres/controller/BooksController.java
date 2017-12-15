@@ -5,7 +5,7 @@
  */
 package com.livres.controller;
 
-import com.livres.dao.LivresDAO;
+import com.livres.dao.LivreDAO;
 import com.livres.model.Livre;
 import com.livres.model.User;
 import com.livres.services.LivreService;
@@ -38,10 +38,12 @@ public class BooksController {
     public String welcome(ModelMap model, HttpSession session)  {
         System.out.println("In controller BooksController");
         User user = (User)session.getAttribute("User");
-        List<Livre> listeDeLivre = new LinkedList<>();
+        //si l'utilisateur est connecté
         if (user != null) {     
             System.out.println("(user != null)");
-            model.put("listeDeLivre",listeDeLivre );
+            List<Livre> listeDeLivre = livreService.obtenirListeLivre();
+            System.out.println("Taille de la liste de livres: "+listeDeLivre.size());
+            model.put("listeDeLivre", listeDeLivre);
             return "index";
         } else {
             System.out.println("do a redirect");

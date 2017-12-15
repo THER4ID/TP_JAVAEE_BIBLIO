@@ -5,7 +5,7 @@
  */
 package com.livres.services;
 
-import com.livres.dao.LivresDAO;
+import com.livres.dao.LivreDAO;
 import com.livres.model.Livre;
 import java.util.List;
 
@@ -15,13 +15,13 @@ import java.util.List;
  */
 public class LivreService {
     
-    LivresDAO dao;
+    LivreDAO dao;
     
-    public void setDao(LivresDAO dao) {
+    public void setDao(LivreDAO dao) {
         this.dao = dao;
     }
     
-    public List<Livre> listeDeLivre()
+    public List<Livre> obtenirListeLivre()
     {
         List<Livre> ListeLivre = dao.findAll();
         return ListeLivre; 

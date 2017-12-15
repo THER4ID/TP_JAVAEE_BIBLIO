@@ -17,7 +17,7 @@ import java.util.List;
  *
  * @author usager
  */
-public class LivresDAO extends DAO<Livre>{
+public class LivreDAO extends DAO<Livre>{
 
     @Override
     public boolean create(Livre x) {
@@ -89,17 +89,17 @@ public class LivresDAO extends DAO<Livre>{
             Statement stm = connexion.getInstance().createStatement();
             ResultSet r = stm.executeQuery("SELECT * FROM book");
             while(r.next()){
-                Livre L = new Livre();
-                L.setISBN(r.getString("ISBN"));
-                L.setAuthor(r.getString("AUTHOR"));
-                L.setTitle(r.getString("TITLE"));
-                L.setNB_Pages(Integer.parseInt(r.getString("NB_PAGES")));
-                L.setEdition(r.getString("EDITION"));
-                L.setYear(Integer.parseInt(r.getString("YEAR")));
-                L.setLanguage(r.getString("LANGUAGE"));
-                L.setDescription(r.getString("DESCRIPTION"));
-                L.setKeywords(r.getString("KEYWORDS"));
-                liste.add(L);
+                Livre livre = new Livre();
+                livre.setISBN(r.getString("ISBN"));
+                livre.setAuthor(r.getString("AUTHOR"));
+                livre.setTitle(r.getString("TITLE"));
+                livre.setNB_Pages(Integer.parseInt(r.getString("NB_PAGES")));
+                livre.setEdition(r.getString("EDITION"));
+                livre.setYear(Integer.parseInt(r.getString("YEAR")));
+                livre.setLanguage(r.getString("LANGUAGE"));
+                livre.setDescription(r.getString("DESCRIPTION"));
+                livre.setKeywords(r.getString("KEYWORDS"));
+                liste.add(livre);
             }
             r.close();
             stm.close();
