@@ -21,41 +21,38 @@ public class LivreDAO extends DAO<Livre>{
 
     @Override
     public boolean create(Livre x) {
-        String req = "INSERT INTO BOOK commentaire (`ISBN` , `AUTHOR` , `TITLE`, `NB_PAGES`, `EDITION`, `YEAR`, `LANGUAGE`, `DESCRIPTION`, `KEYWORDS`) "+
-			     "VALUES (?,?,?,?,?,?,?,?,?)";
+        String req = "INSERT INTO book (`ISBN` , `AUTHOR` , `TITLE`, `NB_PAGES`, `EDITION`, `YEAR`, `LANGUAGE`, `DESCRIPTION`, `KEYWORDS`) VALUES (?,?,?,?,?,?,?,?,?)";
                 PreparedStatement stm = null;
-		try
-		{
-			stm = connexion.getInstance().prepareStatement(req);
-                        stm.setString(1,x.getISBN());
-                        stm.setString(2,x.getAuthor() );
-                        stm.setString(3,x.getTitle());
-                        stm.setInt(4, x.getNB_Pages());
-                        stm.setString(5,x.getEdition());
-                        stm.setInt(6,x.getYear());
-                        stm.setString(7,x.getLanguage());
-                        stm.setString(8,x.getDescription());
-                        stm.setString(9,x.getKeywords());
-			int n = stm.executeUpdate();
-			if (n>0)
-			{
-				stm.close();
-				return true;
-			}
+		try {
+                    stm = connexion.getInstance().prepareStatement(req);
+                    stm.setString(1,x.getISBN());
+                    stm.setString(2,x.getAuthor() );
+                    stm.setString(3,x.getTitle());
+                    stm.setInt(4, x.getNB_Pages());
+                    stm.setString(5,x.getEdition());
+                    stm.setInt(6,x.getYear());
+                    stm.setString(7,x.getLanguage());
+                    stm.setString(8,x.getDescription());
+                    stm.setString(9,x.getKeywords());
+                    int n = stm.executeUpdate();
+                    System.out.println("stm.executeUpdate() result: "+n);
+                    if (n>0) {
+                        stm.close();
+                        return true;
+                    }
 		}
-		catch (SQLException exp)
-		{
+		catch (SQLException exp) {
+                    exp.printStackTrace();
 		}
-		finally
-		{
-			if (stm!=null)
-			try {
-				stm.close();
-			}
-                        catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		finally {
+                    if (stm!=null)
+                    try {
+                        stm.close();
+                    }
+                    catch (SQLException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
 		}
 		return false;
     }
@@ -84,8 +81,7 @@ public class LivreDAO extends DAO<Livre>{
     public List<Livre> findAll() {
         List<Livre> liste = new LinkedList<>();
 
-        try
-        {
+        try {
             Statement stm = connexion.getInstance().createStatement();
             ResultSet r = stm.executeQuery("SELECT * FROM book");
             while(r.next()){
@@ -104,9 +100,8 @@ public class LivreDAO extends DAO<Livre>{
             r.close();
             stm.close();
         }
-        catch(SQLException exp)
-        {
-
+        catch(SQLException exp) {
+            exp.printStackTrace();
         }
         return liste;
     }

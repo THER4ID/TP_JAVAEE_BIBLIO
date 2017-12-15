@@ -14,23 +14,23 @@ import java.util.List;
  * @author usager
  */
 public class LivreService {
-    
+
     LivreDAO dao;
-    
+
     public void setDao(LivreDAO dao) {
         this.dao = dao;
     }
-    
+
     public List<Livre> obtenirListeLivre()
     {
         List<Livre> ListeLivre = dao.findAll();
-        return ListeLivre; 
+        return ListeLivre;
     }
-    
+
     public boolean ajouterLivre(String isbn, String author, String title, int nb_pages,String edition, int year, String language, String description, String keywords)
     {
         Livre livre = new Livre();
-        
+
         livre.setISBN(isbn);
         livre.setAuthor(author);
         livre.setTitle(title);
@@ -40,14 +40,8 @@ public class LivreService {
         livre.setLanguage(language);
         livre.setDescription(description);
         livre.setKeywords(keywords);
-        
-        dao.create(livre);
-        
-        if(dao.create(livre) == true){
-            return true;
-        }
-        
-        return false;
+
+        return dao.create(livre);
     }
-    
+
 }

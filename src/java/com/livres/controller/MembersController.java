@@ -42,7 +42,7 @@ public class MembersController {
     public String login(ModelMap model, HttpSession session,
             @RequestParam("email") String email,
             @RequestParam("password") String password)  {
-        System.out.println("In controller MemberController.login");
+        System.out.println("In controller MembersController.login");
 
         User user = (User)session.getAttribute("User");
         if (user == null) {
@@ -60,7 +60,7 @@ public class MembersController {
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String pageRegister(ModelMap model, HttpSession session)  {
-        System.out.println("In controller MemberController.pageRegister");
+        System.out.println("In controller MembersController.pageRegister");
 
         User user = (User)session.getAttribute("User");
         if (user == null) {
