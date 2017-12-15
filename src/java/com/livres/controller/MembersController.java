@@ -38,7 +38,35 @@ public class MembersController {
 
         User user = (User)session.getAttribute("User");
         if (user == null) {
-            return "login";
+            //TODO: créer un login
+            return null;
+        } else {
+            return "redirect:/";
+        }
+
+    }
+
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    public String pageRegister(ModelMap model, HttpSession session)  {
+        System.out.println("In controller MembersController.pageRegister");
+
+        User user = (User)session.getAttribute("User");
+        if (user == null) {
+            return "CreerCompte";
+        } else {
+            return "redirect:/";
+        }
+
+    }
+
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public String register(ModelMap model, HttpSession session)  {
+        System.out.println("In controller MemberController.register");
+
+        User user = (User)session.getAttribute("User");
+        if (user == null) {
+            //TODO: créer un compte
+            return null;
         } else {
             return "redirect:/";
         }
