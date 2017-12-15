@@ -12,12 +12,13 @@
         <style>
             body{
                 background-color: #76b852;
-                font-family: 'Roboto'; 
+                font-family: 'Roboto';
+            } 
             .deconnecter{
                 left:620px;
             }
-
         </style>
+
     </head>
 
     <body>
@@ -33,6 +34,56 @@
                     </ul>
                 </div>     
             </nav>
-        </div>  
+            
+            <div class="col-xs-3" style="border-style:solid;">
+                
+                <label>Ajouter un Livre</label>
+                <form>                               
+                    <div class="form-group">          
+                        <label>ISBN:</label>                       
+                        <input type="text" class="form-control" id="isbn"/>
+                    </div>
+                    <div class="form-group">
+                        
+                        <label>auteur:</label>                       
+                        <input type="text" class="form-control" id="author" />
+                    </div>
+                    <div class="form-group">
+                        <label>titre:</label>
+                        <input type="text" class="form-control" id="title" />
+                    </div>
+                    <div class="form-group">
+                        <label>Nombre de pages</label>
+                        <input type="number" class="form-control" id="nb_pages" />
+                    </div>
+                    <div class="form-group">
+                        <label>Edition:</label>
+                        <input type="text" class="form-control" id="edition" />
+                    </div>
+                    <div class="form-group">
+                        <label>Année</label>
+                        <input type="number" class="form-control" value="2017" id="year" maxlength="4" />
+                    </div>
+                    <div class="form-group">
+                        <label>langue:</label>
+                        <input type="text" class="form-control" id="language" />
+                    </div>
+                    <div class="form-group">
+                        <label>Description:</label>
+                        <input type="text" class="form-control" id="description" /> 
+                    </div>
+                    <div class="form-group">
+                        <label>Mots clé:</label>
+                        <input type="text" class="form-control" id="keywords" />
+                    </div>   
+                    <div class="form group">
+                        <button class="form-control">Créer</button>
+                    <div>
+                </form>
+                
+                
+                
+            </div>
+        </div>
     </body>
 </html>

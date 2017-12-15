@@ -26,7 +26,7 @@ public class BooksController {
         if (user != null) {
             return "index";
         } else {
-            return "login";
+            return "index";
         }
 
     }
