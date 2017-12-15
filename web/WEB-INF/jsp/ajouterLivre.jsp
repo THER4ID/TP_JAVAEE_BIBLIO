@@ -1,21 +1,17 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
-
-
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-        <style>
-            body{
-                background-color: #76b852;
-                font-family: 'Roboto';
-            }
-        </style>
 
+        <title>Ajouter un livre</title>
+
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+        <link href="<c:url value="/resources/css/custom.css" />" rel="stylesheet">
     </head>
 
     <body>
@@ -30,7 +26,7 @@
                         <li class="active"><a href="ajouterLivre">Ajouter un livre</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="active pull-right"><a href="/members/logout">Déconnexion</a></li>
+                        <li class="active pull-right"><a href="members/logout">Déconnexion</a></li>
                     </ul>
                 </div>
             </nav>
