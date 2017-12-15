@@ -31,7 +31,7 @@ public class Connexion implements ServletContextAware{
                 if (connection == null)
                     System.out.println("cnx est NULLLLLLLLLLLLLLLLLLLLLLL");
                 else {
-                    System.out.println("cnx est NON NULLLLLLLLLLLLLLLLLLLLLLL");
+                    System.out.println("cnx est NON NULLLLLLLLLLLLLLLLLLL");
                 }
             }
             catch (ClassNotFoundException | SQLException exp) {

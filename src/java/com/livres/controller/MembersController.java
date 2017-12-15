@@ -6,11 +6,13 @@
 package com.livres.controller;
 
 import com.livres.model.User;
+import com.livres.services.MembersService;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -18,6 +20,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 public class MembersController {
+    private MembersService membersService;
+    public void setMembersService(MembersService membersService) {
+        this.membersService = membersService;
+    }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String pageLogin(ModelMap model, HttpSession session)  {
@@ -25,74 +31,81 @@ public class MembersController {
 
         User user = (User)session.getAttribute("User");
         if (user == null) {
+            // Si l'utilisateur n'est pas déjà connecté
             return "login";
-        } else {
-            return "redirect:/";
         }
+        return "redirect:/";
 
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(ModelMap model, HttpSession session)  {
+    public String login(ModelMap model, HttpSession session,
+            @RequestParam("email") String email,
+            @RequestParam("password") String password)  {
         System.out.println("In controller MemberController.login");
 
         User user = (User)session.getAttribute("User");
         if (user == null) {
-            //TODO: créer un login
-            return null;
-        } else {
-            return "redirect:/";
-        }
+            if (!membersService.login(email, password, session)){
+                System.out.println("Login échoué");
+                // Si le login a échoué
+                return "redirect:/members/login";
+            } else {
+                System.out.println("Login réussit");
+            }
+        } // Si l'utilisateur est logged in
+        return "redirect:/";
 
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String pageRegister(ModelMap model, HttpSession session)  {
-        System.out.println("In controller MembersController.pageRegister");
+        System.out.println("In controller MemberController.pageRegister");
 
         User user = (User)session.getAttribute("User");
         if (user == null) {
-            return "CreerCompte";
-        } else {
-            return "redirect:/";
-        }
+            // Si l'utilisateur n'est pas déjà connecté
+            return "register";
+        } // Si l'utilisateur est déjà connecté
+        return "redirect:/";
 
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String register(ModelMap model, HttpSession session)  {
-        System.out.println("In controller MemberController.register");
+    public String register(ModelMap model, HttpSession session,
+            @RequestParam("username") String username,
+            @RequestParam("email") String email,
+            @RequestParam("password") String password)  {
+        System.out.println("In controller MembersController.register");
 
         User user = (User)session.getAttribute("User");
         if (user == null) {
-            //TODO: créer un compte
-            return null;
-        } else {
-            return "redirect:/";
-        }
+            if(membersService.register(username, email, password)) {
+                // Si le register a fonctionné
+                return "redirect:/members/login";
+            } // Si le register a échoué
+            return "redirect:/members/register";
+        } // Si l'utilisateur est déjà connecté
+        return "redirect:/";
 
     }
+
+    @RequestMapping("/logout")
+    public String logout(ModelMap model, HttpSession session)  {
+        System.out.println("In controller MembersController.logout");
+
+        membersService.logout(session);
+        return "redirect:/members/login";
+
+    }
+
 
     //@ResponseBody
     @RequestMapping("/")
     public String welcome(ModelMap model, HttpSession session)  {
         System.out.println("In controller MembersController.welcome");
 
-        User user = (User)session.getAttribute("User");
-        if (user != null) {
-            return "redirect:/members/login";
-        } else {
-            //<property name="prefix" value=""/>
-            //<property name="suffix" value=".jsp"/>
-            return"index";
-        }
-
+        return "redirect:/members/login";
     }
 
-    //@ResponseBody
-//    @RequestMapping(method = RequestMethod.GET, value="/", params={"nom"})
-//    public String convert(@RequestParam("nom") String nom, ModelMap model) {
-//        model.addAttribute("message", "1 "+nom+" vaut "+converterService.getTaux(nom)+" $CAN");
-//        return "convert";
-//    }
 }

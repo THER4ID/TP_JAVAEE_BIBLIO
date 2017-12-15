@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : CreerCompte
     Created on : 2017-12-08, 12:26:57
     Author     : usager
@@ -110,29 +110,27 @@
           background: linear-gradient(to left, #76b852, #8DC26F);
           font-family: "Roboto", sans-serif;
           -webkit-font-smoothing: antialiased;
-          -moz-osx-font-smoothing: grayscale;      
+          -moz-osx-font-smoothing: grayscale;
         }
     </style>
-    
+
     <script>
         //script
         $('.message a').click(function(){
             $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
         });
-       
+
     </script>
     <body>
         <div class="login-page">
-            <div class="form">     
+            <div class="form">
               </form>
-              <form class="login-form" action ="creation.action" method="post">
-                <input type ='hidden' name='Action' value="creation" />
-                <span class="errorMessage"><c:out value="${requestScope.message}" /></span>
-                <input type="text" placeholder="Nom D'Utilisateur" name="prenom"/>
-                <input type="password" placeholder="mot de passe" name="mdpcreer"/>
-                <input type="text" placeholder="adresse courriel" name="courrielcreer"/>
-                <button id="register">créer le compte</button>
-                <p class="message">déjà un compte? <a href="PageConnexion.Jsp">Se connecter</a></p>
+              <form class="login-form" action ="register" method="post">
+                <input type="email" placeholder="Adresse courriel" name="email" required/>
+                <input type="text" placeholder="Nom d'utilisateur" name="username" required/>
+                <input type="password" placeholder="Mot de passe" name="password" required/>
+                <button id="register">Créer le compte</button>
+                <p class="message">Déjà un compte? <a href="login">Se connecter</a></p>
               </form>
             </div>
         </div>
