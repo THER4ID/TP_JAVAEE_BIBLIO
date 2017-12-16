@@ -18,6 +18,91 @@
         <link href="<c:url value="/resources/css/custom.css" />" rel="stylesheet">
     </head>
     <body>
-        <h1>Page d'acceuil, doit afficher une liste de livres.</h1>
+        <div class="container">
+
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="/">Livres</a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="ajouterLivre">Ajouter un livre</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active pull-right"><a href="members/logout">Déconnexion</a></li>
+                    </ul>
+                </div>
+            </nav>
+            
+            <div class="table table-hover">
+                <table class="table" method="put">
+                    <c:forEach items="${listeDeLivre}" var="listeDeLivre"></c:forEach>
+                    
+                        <label style="font-size: 300%">Liste De Livres</label>
+                    
+                    <tr style="text-align: center;">
+                        <td>
+                            <label>ISBN</label>
+                        </td>
+                        <td>
+                            <label>Auteur</label>                          
+                        </td>
+                        <td>
+                            <label>Titre</label>                          
+                        </td>
+                        <td>
+                            <label>Nombre de Pages</label>                          
+                        </td>
+                        <td>
+                            <label>Edition</label>                          
+                        </td>
+                        <td>
+                            <label>Année</label>                            
+                        </td>
+                        <td>
+                            <label>Langue</label>                          
+                        </td>
+                        <td>
+                            <label>Description</label>                          
+                        </td>
+                        <td>
+                            <label>Mots-Clés</label>                          
+                        </td>          
+                    </tr>
+                        <c:forEach var="i" begin="0" end="19">
+                            <tr>
+                                <td>
+                                    ${listeDeLivre.get(i).ISBN}
+                                </td>
+                                <td>
+                                    ${listeDeLivre.get(i).author}                           
+                                </td>
+                                <td>
+                                    ${listeDeLivre.get(i).title}                          
+                                </td>
+                                <td>
+                                    ${listeDeLivre.get(i).NB_Pages}                          
+                                </td>
+                                <td>
+                                    ${listeDeLivre.get(i).edition}                          
+                                </td>
+                                <td>
+                                    ${listeDeLivre.get(i).year}                          
+                                </td>
+                                <td>
+                                    ${listeDeLivre.get(i).language}                          
+                                </td>
+                                <td>
+                                    ${listeDeLivre.get(i).description}                          
+                                </td>
+                                <td>
+                                    ${listeDeLivre.get(i).keywords}                          
+                                </td>
+                            </c:forEach>
+
+                        </tr>
+                </table>
+            </div>
+        </div>
     </body>
 </html>
