@@ -31,7 +31,7 @@ public class BooksController {
     }
 
     //@ResponseBody
-    @RequestMapping("/")
+    @RequestMapping("/*")
     public String welcome(ModelMap model, HttpSession session)  {
         System.out.println("In controller BooksController");
         User user = (User)session.getAttribute("User");
