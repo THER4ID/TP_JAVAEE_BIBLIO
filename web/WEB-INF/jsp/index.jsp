@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        
+
         <title>Acceuil</title>
 
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -33,74 +33,74 @@
                     </ul>
                 </div>
             </nav>
-            
+
             <div class="table table-hover">
                 <table class="table" method="put">
                     <c:forEach items="${listeDeLivre}" var="listeDeLivre"></c:forEach>
-                    
+
                         <label style="font-size: 300%">Liste De Livres</label>
-                    
+
                     <tr style="text-align: center;">
                         <td>
                             <label>ISBN</label>
                         </td>
                         <td>
-                            <label>Auteur</label>                          
+                            <label>Auteur</label>
                         </td>
                         <td>
-                            <label>Titre</label>                          
+                            <label>Titre</label>
                         </td>
                         <td>
-                            <label>Nombre de Pages</label>                          
+                            <label>Nombre de Pages</label>
                         </td>
                         <td>
-                            <label>Edition</label>                          
+                            <label>Edition</label>
                         </td>
                         <td>
-                            <label>Année</label>                            
+                            <label>Année</label>
                         </td>
                         <td>
-                            <label>Langue</label>                          
+                            <label>Langue</label>
                         </td>
                         <td>
-                            <label>Description</label>                          
+                            <label>Description</label>
                         </td>
                         <td>
-                            <label>Mots-Clés</label>                          
-                        </td>          
+                            <label>Mots-Clés</label>
+                        </td>
                     </tr>
-                        <c:forEach var="i" begin="0" end="19">
+                        <c:forEach var="i" begin="0" end="${listeDeLivre.size()-1}">
                             <tr>
                                 <td>
                                     ${listeDeLivre.get(i).ISBN}
                                 </td>
                                 <td>
-                                    ${listeDeLivre.get(i).author}                           
+                                    ${listeDeLivre.get(i).author}
                                 </td>
                                 <td>
-                                    ${listeDeLivre.get(i).title}                          
+                                    ${listeDeLivre.get(i).title}
                                 </td>
                                 <td>
-                                    ${listeDeLivre.get(i).NB_Pages}                          
+                                    ${listeDeLivre.get(i).NB_Pages}
                                 </td>
                                 <td>
-                                    ${listeDeLivre.get(i).edition}                          
+                                    ${listeDeLivre.get(i).edition}
                                 </td>
                                 <td>
-                                    ${listeDeLivre.get(i).year}                          
+                                    ${listeDeLivre.get(i).year}
                                 </td>
                                 <td>
-                                    ${listeDeLivre.get(i).language}                          
+                                    ${listeDeLivre.get(i).language}
                                 </td>
                                 <td>
-                                    ${listeDeLivre.get(i).description}                          
+                                    ${listeDeLivre.get(i).description}
                                 </td>
                                 <td>
-                                    ${listeDeLivre.get(i).keywords}                          
+                                    ${listeDeLivre.get(i).keywords}
                                 </td>
-                            </c:forEach>
 
                         </tr>
+                    </c:forEach>
                 </table>
             </div>
         </div>
