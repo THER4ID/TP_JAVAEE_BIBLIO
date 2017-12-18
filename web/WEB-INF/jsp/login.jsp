@@ -21,7 +21,6 @@
     <body>
         <div class="login-page">
             <div class="form">
-
               <form class="login-form" action="login" method="post">
                 <input type="email" placeholder="Adresse courriel" name="email" required/>
                 <input type="password" placeholder="Mot de passe" name="password" required/>

@@ -35,39 +35,37 @@
             </nav>
 
             <div class="table table-hover">
-                <table class="table" method="put">
-                    <c:forEach items="${listeDeLivre}" var="listeDeLivre"></c:forEach>
-
-                        <label style="font-size: 300%">Liste De Livres</label>
-
-                    <tr style="text-align: center;">
-                        <td>
+				<label style="font-size: 300%">Liste De Livres</label>
+				
+                <table class="table">
+                    <tr>
+                        <th>
                             <label>ISBN</label>
-                        </td>
-                        <td>
+                        </th>
+                        <th>
                             <label>Auteur</label>
-                        </td>
-                        <td>
+                        </th>
+                        <th>
                             <label>Titre</label>
-                        </td>
-                        <td>
+                        </th>
+                        <th>
                             <label>Nombre de Pages</label>
-                        </td>
-                        <td>
+                        </th>
+                        <th>
                             <label>Edition</label>
-                        </td>
-                        <td>
+                        </th>
+                        <th>
                             <label>Année</label>
-                        </td>
-                        <td>
+                        </th>
+                        <th>
                             <label>Langue</label>
-                        </td>
-                        <td>
+                        </th>
+                        <th>
                             <label>Description</label>
-                        </td>
-                        <td>
+                        </th>
+                        <th>
                             <label>Mots-Clés</label>
-                        </td>
+                        </th>
                     </tr>
                         <c:forEach var="i" begin="0" end="${listeDeLivre.size()-1}">
                             <tr>

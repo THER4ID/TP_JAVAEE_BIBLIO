@@ -21,7 +21,6 @@
     <body>
         <div class="login-page">
             <div class="form">
-              </form>
               <form class="login-form" action ="register" method="post">
                 <input type="email" placeholder="Adresse courriel" name="email" required/>
                 <input type="text" placeholder="Nom d'utilisateur" name="username" required/>
